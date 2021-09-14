@@ -46,8 +46,8 @@ const getInputValue = (id) => {
 // main price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
-  const convertPrice = parseFloat(value);
-  const total = convertedOldPrice + convertPrice;
+  const convertedPrice = value;
+  const total = convertedOldPrice + convertedPrice;
   document.getElementById(id).innerText = total.toFixed(2);;
 };
 
@@ -58,18 +58,18 @@ const setInnerText = (id, value) => {
 
 // update delivery charge and total Tax
 const updateTaxAndCharge = () => {
-  const priceConverted = getInputValue("price");
-  if (priceConverted > 200) {
+  const updatedPrice = getInputValue("price");
+  if (updatedPrice > 200) {
     setInnerText("delivery-charge", 30);
-    setInnerText("total-tax", priceConverted * 0.2);
+    setInnerText("total-tax", updatedPrice * 0.2);
   }
-  if (priceConverted > 400) {
+  if (updatedPrice > 400) {
     setInnerText("delivery-charge", 50);
-    setInnerText("total-tax", priceConverted * 0.3);
+    setInnerText("total-tax", updatedPrice * 0.3);
   }
-  if (priceConverted > 500) {
+  if (updatedPrice > 500) {
     setInnerText("delivery-charge", 60);
-    setInnerText("total-tax", priceConverted * 0.4);
+    setInnerText("total-tax", updatedPrice * 0.4);
   }
 };
 
